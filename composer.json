@@ -1,0 +1,37 @@
+{
+    "name": "iocaste/lumen-form-requests",
+    "description": "Missing form requests functionality for lumen, ported from laravel framework.",
+    "authors": [
+        {
+            "name": "John.Doe",
+            "email": "iocaste.systems@gmail.com"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "lumen",
+        "api"
+    ],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "roave/security-advisories": "dev-master",
+        "php": ">=7.1.3",
+        "laravel/lumen-framework": "5.6.*",
+        "illuminate/contracts": "~5.6.0",
+        "illuminate/support": "~5.6.0",
+        "illuminate/validation": "~5.6.0",
+        "illuminate/http": "~5.6.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "phpunit/phpunit": "~7.0",
+        "mockery/mockery": "~1.0",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Iocaste\\Form\\": "src"
+        }
+    }
+}
