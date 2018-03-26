@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Lumen\Http\Redirector;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\ValidatesWhenResolvedTrait;
 use Illuminate\Contracts\Validation\ValidatesWhenResolved;
@@ -117,8 +117,9 @@ class FormRequest extends Request implements ValidatesWhenResolved
      */
     protected function failedValidation(Validator $validator): void
     {
-        throw (new ValidationException($validator))
-            ->errorBag($this->errorBag);
+        throw new HttpResponseException($this->response(
+            $this->formatErrors($validator)
+        ));
     }
 
     /**
