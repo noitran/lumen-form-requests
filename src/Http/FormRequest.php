@@ -3,7 +3,6 @@
 namespace Iocaste\Form\Http;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Http\Redirector;
 use Illuminate\Contracts\Container\Container;
@@ -120,30 +119,7 @@ class FormRequest extends Request implements ValidatesWhenResolved
     {
         throw (new ValidationException($validator))
             ->errorBag($this->errorBag);
-        // throw (new ValidationException($validator))
-        //     ->errorBag($this->errorBag)
-        //     ->redirectTo($this->getRedirectUrl());
     }
-
-//    /**
-//     * Get the URL to redirect to on a validation error.
-//     *
-//     * @return string
-//     */
-//    protected function getRedirectUrl()
-//    {
-//        $url = $this->redirector->getUrlGenerator();
-//
-//        if ($this->redirect) {
-//            return $url->to($this->redirect);
-//        } elseif ($this->redirectRoute) {
-//            return $url->route($this->redirectRoute);
-//        } elseif ($this->redirectAction) {
-//            return $url->action($this->redirectAction);
-//        }
-//
-//        return $url->previous();
-//    }
 
     /**
      * Determine if the request passes the authorization check.
@@ -169,7 +145,6 @@ class FormRequest extends Request implements ValidatesWhenResolved
     protected function failedAuthorization(): void
     {
         throw new AuthorizationException($this->forbiddenResponse());
-        // throw new AuthorizationException('This action is unauthorized.');
     }
 
     /**
@@ -186,11 +161,11 @@ class FormRequest extends Request implements ValidatesWhenResolved
     /**
      * Get the response for a forbidden operation.
      *
-     * @return Response
+     * @return JsonResponse
      */
-    public function forbiddenResponse(): Response
+    public function forbiddenResponse(): JsonResponse
     {
-        return new Response('Forbidden', 403);
+        return new JsonResponse('Forbidden', 403);
     }
 
     /**
