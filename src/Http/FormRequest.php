@@ -1,6 +1,6 @@
 <?php
 
-namespace Iocaste\Form\Http;
+namespace Noitran\Form\Http;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -114,9 +114,9 @@ class FormRequest extends Request implements ValidatesWhenResolved
      * Handle a failed validation attempt.
      *
      * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @throws HttpResponseException
      * @return void
      *
-     * @throws HttpResponseException
      */
     protected function failedValidation(Validator $validator): void
     {
@@ -139,13 +139,12 @@ class FormRequest extends Request implements ValidatesWhenResolved
         return false;
     }
 
-    
     /**
      * Handle a failed authorization attempt.
      *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
      *
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     protected function failedAuthorization(): void
     {

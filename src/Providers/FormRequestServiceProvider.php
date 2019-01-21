@@ -1,8 +1,8 @@
 <?php
 
-namespace Iocaste\Form\Providers;
+namespace Noitran\Form\Providers;
 
-use Iocaste\Form\Http\FormRequest;
+use Noitran\Form\Http\FormRequest;
 use Laravel\Lumen\Http\Redirector;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Validation\ValidatesWhenResolved;
