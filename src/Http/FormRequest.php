@@ -12,6 +12,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\ValidatesWhenResolvedTrait;
 use Illuminate\Contracts\Validation\ValidatesWhenResolved;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
+use Illuminate\Support\Str;
 
 /**
  * Class FormRequest
@@ -193,7 +194,7 @@ class FormRequest extends Request implements ValidatesWhenResolved
         $rules = $this->container->call([$this, 'rules']);
 
         return $this->only(collect($rules)->keys()->map(function ($rule) {
-            return str_contains($rule, '.') ? explode('.', $rule)[0] : $rule;
+            return Str::contains($rule, '.') ? explode('.', $rule)[0] : $rule;
         })->unique()->toArray());
     }
 
